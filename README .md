@@ -86,6 +86,11 @@ question --------------------------------------------> |
 - `query.py` — basic retrieve-and-generate script (no self-healing)
 - `self_healing.py` — full pipeline with faithfulness checking and automatic
   feedback-driven retries
+- `generate_test_set.py` — automatically generates a test set of question/answer
+  pairs from whatever document is currently ingested (works for any document,
+  not just one specific file)
+- `evaluate.py` — runs the test set through the self-healing pipeline, records
+  faithfulness scores and retry counts, and saves results to `eval_results.csv`
 
 ## Setup
 
@@ -100,7 +105,27 @@ pip install langchain langchain-community langchain-groq faiss-cpu sentence-tran
 # Add documents to docs/, then:
 python ingest.py
 python self_healing.py
+
+# To evaluate against an auto-generated test set for your document:
+python generate_test_set.py
+python evaluate.py
 ```
+
+## Evaluation results
+
+Running `generate_test_set.py` auto-generates questions directly from whatever
+document is currently indexed, so the eval set is never hardcoded to one
+specific file. In one test run (5 auto-generated factual questions), the
+pipeline scored a perfect 1.0 average faithfulness with zero retries needed.
+
+This makes sense: auto-generated questions tend to be direct factual lookups
+("What is the candidate's CGPA?") that the LLM answers correctly on the first
+try. The self-healing/retry mechanism shows its real value on harder,
+**aggregation-style questions** (e.g. "how many projects are mentioned?") that
+require correctly combining information across multiple chunks — exactly the
+kind of question that exposed the original hallucination documented above.
+A natural extension would be generating harder, multi-chunk aggregation
+questions specifically to stress-test the self-healing loop further.
 
 ## Lessons learned
 
@@ -120,7 +145,8 @@ python self_healing.py
 
 ## Next steps
 
-- Build an evaluation dashboard to track faithfulness/relevance scores across
-  a larger test set of questions (using RAGAS and/or this custom judge)
+- Build a visual dashboard (charts/table) on top of `eval_results.csv`
+- Generate harder, multi-chunk aggregation questions to better stress-test
+  the self-healing loop
 - Add retrieval precision/recall metrics, not just generation faithfulness
 - Deploy as a small web app (FastAPI backend + simple frontend)

@@ -1,0 +1,6 @@
+question,expected_answer,final_answer,faithfulness_score,judge_reason
+Where is Amulya Singla working as a Web Development Intern?,RENXO Technologies Private Limited.,"RENXO Technologies Private Limited, Remote – Virtual.",1.0,"The answer is explicitly supported by the CONTEXT, as it is listed under the ""Experience"" section as ""RENXO Technologies Private Limited, Remote – Virtual""."
+What programming languages does the AI Code Sandbox support?,"Python, JavaScript, and C++.","The AI Code Sandbox supports Python, JavaScript, and C++.",1.0,"The CONTEXT explicitly states that the AI Code Sandbox supports Python, JavaScript, and C++ with real-time code execution."
+What is the response latency of the context-aware AI suggestions.,Under 2 seconds.,Under 2 seconds.,1.0,"The answer ""Under 2 seconds"" is explicitly supported by the CONTEXT, specifically in the sentence ""Integrated Groq LLaMA 70B API to deliver context-aware AI suggestions with under 2-second response latency."""
+What is the candidate's CGPA?,8.0/10,CGPA: 8.0/10,1.0,The CGPA of 8.0/10 is explicitly mentioned in the CONTEXT under the Education section.
+What is the competitive rating on LeetCode?,∼500.,∼500.,1.0,"The claim of ∼500 is explicitly supported by the CONTEXT, referencing the competitive rating of ∼500 in solving problems on LeetCode."

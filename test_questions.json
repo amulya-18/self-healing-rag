@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Where is Amulya Singla working as a Web Development Intern?",
+    "expected_answer": "RENXO Technologies Private Limited."
+  },
+  {
+    "question": "What programming languages does the AI Code Sandbox support?",
+    "expected_answer": "Python, JavaScript, and C++."
+  },
+  {
+    "question": "What is the response latency of the context-aware AI suggestions.",
+    "expected_answer": "Under 2 seconds."
+  },
+  {
+    "question": "What is the candidate's CGPA?",
+    "expected_answer": "8.0/10"
+  },
+  {
+    "question": "What is the competitive rating on LeetCode?",
+    "expected_answer": "\u223c500."
+  }
+]
